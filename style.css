@@ -174,7 +174,7 @@ body {
 
     #menu-lateral ul {
         display: flex;
-        flex-direction: column;
+        flex-flow: row, wrap;
         gap: 10px;
     }
 
