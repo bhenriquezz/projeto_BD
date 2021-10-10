@@ -177,6 +177,10 @@ body {
         flex-flow: row, wrap;
         gap: 10px;
     }
+    
+    #menu-lateral ul li {
+        border: 1px solid red;
+    }
 
     .card {
         width: 42%;
