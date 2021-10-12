@@ -22,10 +22,7 @@ class Produto{
         this.id++
     }
 }
-
 var produto = new Produto()
-
-//Criação de card do Produto
 
 var bnt = document.getElementById('salvar')
 var cont = 0
@@ -35,6 +32,7 @@ bnt.addEventListener('click', e => {
     cont++
 })
 
+//Criação de card do Produto
 var lista = document.getElementById('lista-produtos')
 function criarCard(id, nome, categoria) {
     let card = document.createElement('div')
@@ -45,6 +43,20 @@ function criarCard(id, nome, categoria) {
     let categoriaProduto = document.createElement('p')
 
     card.className = 'card'
+    card.addEventListener('click', () => {
+        let formulario = document.createElement('form')
+        formulario.method = 'POST'
+        formulario.action = 'detalhes.php'
+
+        let input = document.createElement('input')
+        input.name = 'id'
+        input.value = this.id
+
+        formulario.appendChild(input)
+        document.getElementById('body').appendChild(formulario)
+
+        console.log(this.id)
+    })
 
     switch(categoria) {
         case 'pc':
@@ -76,6 +88,8 @@ function criarCard(id, nome, categoria) {
     nomeProduto.innerText = 'Nome: ' + nome
     categoriaProduto.innerText = 'Categoria: ' + categoria
 
+    card.id = id
+    
     dados.appendChild(idProduto)
     dados.appendChild(nomeProduto)
     dados.appendChild(categoriaProduto)
@@ -88,11 +102,11 @@ function filtrar(filtro) {
     lista.innerHTML = ''
 
     if(filtro == 'todas') {
-        produto.listaProdutos.forEach((produto) => {
+        bd.forEach((produto) => {
             criarCard(produto.id, produto.nome, produto.categoria)
         })
     } else {
-        produto.listaProdutos.forEach((produto) => {
+        bd.forEach((produto) => {
             if(produto.categoria == filtro) {
                 criarCard(produto.id, produto.nome, produto.categoria)
             }
@@ -104,9 +118,89 @@ function buscar() {
     let busca = document.getElementById('input-busca').value 
     lista.innerHTML = ''
     
-    produto.listaProdutos.forEach((produto) => {
+    bd.forEach((produto) => {
         if(produto.nome.toLowerCase().includes(busca.toLowerCase())) {
             criarCard(produto.id, produto.nome, produto.categoria)
         }
+    })
+}
+
+const bd = [
+    {
+        id: 1,
+        nome: "Pc gamer i3",
+        categoria: "pc",
+        quantidade: "120",
+        valorMVendas: "3",
+    },
+    {
+        id: 2,
+        nome: "Cooler",
+        categoria: "hardware",
+        quantidade: "300",
+        valorMVendas: "50",
+    },
+    {
+        id: 3,
+        nome: "Mouse Pad",
+        categoria: "perifericos",
+        quantidade: "340",
+        valorMVendas: "67",
+    },
+    {
+        id: 4,
+        nome: "Pc Gamer Intel core i7",
+        categoria: "pc",
+        quantidade: "150",
+        valorMVendas: "20",
+    },
+    {
+        id: 5,
+        nome: "Mouse Gamer",
+        categoria: "perifericos",
+        quantidade: "300",
+        valorMVendas: "30",
+    },
+    {
+        id: 6,
+        nome: "Monitor 144hz 27",
+        categoria: "monitores",
+        quantidade: "125",
+        valorMVendas: "19",
+    },
+    {
+        id: 7,
+        nome: "Teclado RGB",
+        categoria: "perifericos",
+        quantidade: "180",
+        valorMVendas: "60",
+    },
+    {
+        id: 8,
+        nome: "Pc Gamer Intel core i5",
+        categoria: "pc",
+        quantidade: "250",
+        valorMVendas: "40",
+    },
+    {
+        id: 9,
+        nome: "Cabo HDMI",
+        categoria: "perifericos",
+        quantidade: "180",
+        valorMVendas: "60",
+    },
+    {
+        id: 10,
+        nome: "Notebook intel core i5",
+        categoria: "notebooks",
+        quantidade: "180",
+        valorMVendas: "20",
+    },
+    
+]
+
+window.onload = () => {
+    bd.forEach(e => {
+        criarCard(e.id, e.nome, e.categoria)
     })
 }
