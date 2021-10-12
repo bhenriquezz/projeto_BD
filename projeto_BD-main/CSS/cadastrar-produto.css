@@ -42,14 +42,6 @@ body {
     opacity: .8;
 }
 
-.textarea-limpo {
-    padding: 5px;
-}
-
-.textarea-limpo:focus {
-    outline: 0;
-}
-
 #container {
     width: 100%;
     display: flex;

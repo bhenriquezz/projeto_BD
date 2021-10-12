@@ -7,7 +7,6 @@ class Produto{
     criarProduto(){
         let produto = this.lerDados()
         this.adicionarProduto(produto)
-        console.log(this.listaProdutos)
     }
 
     lerDados(){
@@ -38,7 +37,6 @@ bnt.addEventListener('click', e => {
 
 var lista = document.getElementById('lista-produtos')
 function criarCard(id, nome, categoria) {
-
     let card = document.createElement('div')
     let imagem = document.createElement('img')
     let dados = document.createElement('div')
@@ -48,7 +46,31 @@ function criarCard(id, nome, categoria) {
 
     card.className = 'card'
 
-    imagem.src = 'https://th.bing.com/th/id/OIP.FYamOFJ0sIWaXMSmUezf1wHaD4?pid=ImgDet&rs=1'
+    switch(categoria) {
+        case 'pc':
+            imagem.src = './IMG/PC.jpg'
+            break
+
+        case 'hardware':
+            imagem.src = './IMG/Hardware.jpg'
+            break
+
+        case 'perifericos':
+            imagem.src = './IMG/Perifericos.jpg'
+            break
+
+        case 'monitores':
+            imagem.src = './IMG/Monitores.jpg'
+            break
+
+        case 'notebooks':
+            imagem.src = './IMG/Notebooks.jpg'
+            break
+
+        default:
+            imagem.alt = 'Imagem do Produto'
+            break
+    }
 
     idProduto.innerText = 'Id: ' + id
     nomeProduto.innerText = 'Nome: ' + nome
@@ -62,3 +84,29 @@ function criarCard(id, nome, categoria) {
     lista.appendChild(card)
 }
 
+function filtrar(filtro) {
+    lista.innerHTML = ''
+
+    if(filtro == 'todas') {
+        produto.listaProdutos.forEach((produto) => {
+            criarCard(produto.id, produto.nome, produto.categoria)
+        })
+    } else {
+        produto.listaProdutos.forEach((produto) => {
+            if(produto.categoria == filtro) {
+                criarCard(produto.id, produto.nome, produto.categoria)
+            }
+        })
+    }
+}
+
+function buscar() {
+    let busca = document.getElementById('input-busca').value 
+    lista.innerHTML = ''
+    
+    produto.listaProdutos.forEach((produto) => {
+        if(produto.nome.toLowerCase().includes(busca.toLowerCase())) {
+            criarCard(produto.id, produto.nome, produto.categoria)
+        }
+    })
+}
