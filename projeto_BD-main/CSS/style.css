@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -124,6 +126,10 @@ body {
     cursor: pointer;
 }
 
+#menu-lateral ul li div {
+    cursor: pointer;
+}
+
 #form-cadastro-produto {
     display: flex;
     flex-direction: column;
@@ -155,9 +161,19 @@ body {
     height: fit-content;
 }
 
+#sugestoes {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    height: fit-content;
+    margin-bottom: 50px;
+    gap: 10px;
+}
+
 #detalhes {
     display: flex;
     box-sizing: border-box;
+    flex-direction: column;
     width: 90%;
     background-color: rgb(240, 240, 240);
     padding: 10px;
@@ -165,9 +181,20 @@ body {
 }
 
 #detalhes .img-detalhe {
-    width: fit-content;
-    height: fit-content;
-    margin-right: 20px;
+    margin-right: 40px;
+}
+
+#dados {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#dados p {
+    display: flex;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 1.1em;
 }
 
 .card {
@@ -207,7 +234,6 @@ body {
     }
 
     #header-container header h1 {
-        
         order: 1;
     }
 
@@ -233,6 +259,28 @@ body {
         flex-flow: row wrap;
     }
 
+    #detalhes {
+        width: 100%;
+        flex-direction: column wrap;
+    }
+
+    #detalhes .img-detalhe {
+        width: 100%;
+        flex-grow: 1;
+    }
+
+    #detalhes img {
+        width: 100%;
+    }
+
+    #sugestoes {
+        margin-top: 10px;
+        width: 100%;
+        border-top: 1px solid gray;
+        justify-content: space-between;
+        padding-top: 10px;
+    }
+
     .card {
         width: 48%;
     }
@@ -250,6 +298,31 @@ body {
     #header-container header #barra-de-pesquisa {
         order: 2;
         width: 46%;
+    }
+
+    #detalhes {
+        width: 90%;
+        flex-direction: row;
+    }
+
+    #detalhes .img-detalhe {
+        width: 40%;
+        max-height: 350px;
+        max-width: 350px;
+    }
+
+    #detalhes img {
+        width: 100%;
+    }
+
+    #detalhes #dados {
+        width: 40%;
+        flex-grow: 1;
+    }
+
+    #sugestoes {
+        width: 90%;
+        justify-content: initial;
     }
 
     .card {

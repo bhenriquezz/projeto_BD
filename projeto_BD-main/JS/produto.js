@@ -22,108 +22,6 @@ class Produto{
         this.id++
     }
 }
-var produto = new Produto()
-
-var bnt = document.getElementById('salvar')
-var cont = 0
-bnt.addEventListener('click', e => {
-    e.preventDefault
-    criarCard(produto.listaProdutos[cont].id, produto.listaProdutos[cont].nome, produto.listaProdutos[cont].categoria)
-    cont++
-})
-
-//Criação de card do Produto
-var lista = document.getElementById('lista-produtos')
-function criarCard(id, nome, categoria) {
-    let card = document.createElement('div')
-    let imagem = document.createElement('img')
-    let dados = document.createElement('div')
-    let idProduto = document.createElement('p')
-    let nomeProduto = document.createElement('p')
-    let categoriaProduto = document.createElement('p')
-
-    card.className = 'card'
-    card.addEventListener('click', () => {
-        let formulario = document.createElement('form')
-        formulario.method = 'POST'
-        formulario.action = 'detalhes.php'
-
-        let input = document.createElement('input')
-        input.name = 'id'
-        input.value = this.id
-
-        formulario.appendChild(input)
-        document.getElementById('body').appendChild(formulario)
-
-        console.log(this.id)
-    })
-
-    switch(categoria) {
-        case 'pc':
-            imagem.src = './IMG/PC.jpg'
-            break
-
-        case 'hardware':
-            imagem.src = './IMG/Hardware.jpg'
-            break
-
-        case 'perifericos':
-            imagem.src = './IMG/Perifericos.jpg'
-            break
-
-        case 'monitores':
-            imagem.src = './IMG/Monitores.jpg'
-            break
-
-        case 'notebooks':
-            imagem.src = './IMG/Notebooks.jpg'
-            break
-
-        default:
-            imagem.alt = 'Imagem do Produto'
-            break
-    }
-
-    idProduto.innerText = 'Id: ' + id
-    nomeProduto.innerText = 'Nome: ' + nome
-    categoriaProduto.innerText = 'Categoria: ' + categoria
-
-    card.id = id
-    
-    dados.appendChild(idProduto)
-    dados.appendChild(nomeProduto)
-    dados.appendChild(categoriaProduto)
-    card.appendChild(imagem)
-    card.appendChild(dados)
-    lista.appendChild(card)
-}
-
-function filtrar(filtro) {
-    lista.innerHTML = ''
-
-    if(filtro == 'todas') {
-        bd.forEach((produto) => {
-            criarCard(produto.id, produto.nome, produto.categoria)
-        })
-    } else {
-        bd.forEach((produto) => {
-            if(produto.categoria == filtro) {
-                criarCard(produto.id, produto.nome, produto.categoria)
-            }
-        })
-    }
-}
-
-function buscar() {
-    let busca = document.getElementById('input-busca').value 
-    lista.innerHTML = ''
-    
-    bd.forEach((produto) => {
-        if(produto.nome.toLowerCase().includes(busca.toLowerCase())) {
-            criarCard(produto.id, produto.nome, produto.categoria)
-        }
-    })
-}
 
 const bd = [
     {
@@ -196,11 +94,148 @@ const bd = [
         quantidade: "180",
         valorMVendas: "20",
     },
-    
 ]
 
 window.onload = () => {
-    bd.forEach(e => {
-        criarCard(e.id, e.nome, e.categoria)
+    if(window.location.href == 'http://127.0.0.1:5500/index.html') {
+        bd.forEach(e => {
+            criarCard(e.id, e.nome, e.categoria, 'home')
+        })
+    } else if(window.location.href == 'http://127.0.0.1:5500/detalhes.html') {
+        var id = localStorage.getItem('id')
+        let detalheID = document.getElementById('detalhe-id')
+        let detalheNome = document.getElementById('detalhe-nome')
+        let detalheValor = document.getElementById('detalhe-valor')
+        let detalheCategoria = document.getElementById('detalhe-categoria')
+        let detalheQuantidade = document.getElementById('detalhe-quantidade')
+        let imagem = document.getElementById('detalhe-imagem')
+
+        bd.forEach(e => {
+            if(parseFloat(id) !== e.id) {
+                criarCard(e.id, e.nome, e.categoria, 'detalhes')
+            }
+        })
+
+        switch(bd[id-1].categoria) {
+            case 'pc':
+                imagem.src = './IMG/PC.jpg'
+                break
+    
+            case 'hardware':
+                imagem.src = './IMG/Hardware.jpg'
+                break
+    
+            case 'perifericos':
+                imagem.src = './IMG/Perifericos.jpg'
+                break
+    
+            case 'monitores':
+                imagem.src = './IMG/Monitores.jpg'
+                break
+    
+            case 'notebooks':
+                imagem.src = './IMG/Notebooks.jpg'
+                break
+    
+            default:
+                imagem.alt = 'Imagem do Produto'
+                break
+        }
+
+        detalheID.innerText = 'ID: ' + bd[id-1].id
+        detalheNome.innerText = bd[id-1].nome
+        detalheValor.innerText = 'R$' + (parseFloat(bd[id-1].valorMVendas).toFixed(2)).toString().replace('.', ',')
+        detalheCategoria.innerText = 'Categoria: ' + bd[id-1].categoria
+        detalheQuantidade.innerText = 'Quantidade disponível: ' + bd[id-1].quantidade
+    }
+}
+
+function buscar() {
+    let busca = document.getElementById('input-busca').value 
+    var lista = document.getElementById('lista-produtos')
+    lista.innerHTML = ''
+    
+    bd.forEach((produto) => {
+        if(produto.nome.toLowerCase().includes(busca.toLowerCase())) {
+            criarCard(produto.id, produto.nome, produto.categoria, 'home')
+        }
+    })
+}
+
+function filtrar(filtro) {
+    var lista = document.getElementById('lista-produtos')
+    lista.innerHTML = ''
+
+    if(filtro == 'todas') {
+        bd.forEach((produto) => {
+            criarCard(produto.id, produto.nome, produto.categoria, 'home')
+        })
+    } else {
+        bd.forEach((produto) => {
+            if(produto.categoria == filtro) {
+                criarCard(produto.id, produto.nome, produto.categoria, 'home')
+            }
+        })
+    }
+}
+
+function criarCard(id, nome, categoria, local) {
+    var lista
+    if(local == 'home') {
+        lista = document.getElementById('lista-produtos')
+    } else if(local == 'detalhes') {
+        lista = document.getElementById('sugestoes')
+    }
+    let card = document.createElement('div')
+    let imagem = document.createElement('img')
+    let dados = document.createElement('div')
+    let idProduto = document.createElement('p')
+    let nomeProduto = document.createElement('p')
+    let categoriaProduto = document.createElement('p')
+
+    card.className = 'card'
+
+    switch(categoria) {
+        case 'pc':
+            imagem.src = './IMG/PC.jpg'
+            break
+
+        case 'hardware':
+            imagem.src = './IMG/Hardware.jpg'
+            break
+
+        case 'perifericos':
+            imagem.src = './IMG/Perifericos.jpg'
+            break
+
+        case 'monitores':
+            imagem.src = './IMG/Monitores.jpg'
+            break
+
+        case 'notebooks':
+            imagem.src = './IMG/Notebooks.jpg'
+            break
+
+        default:
+            imagem.alt = 'Imagem do Produto'
+            break
+    }
+
+    idProduto.innerText = 'Id: ' + id
+    nomeProduto.innerText = 'Nome: ' + nome
+    categoriaProduto.innerText = 'Categoria: ' + categoria
+
+    card.id = id
+    
+    dados.appendChild(idProduto)
+    dados.appendChild(nomeProduto)
+    dados.appendChild(categoriaProduto)
+    card.appendChild(imagem)
+    card.appendChild(dados)
+    lista.appendChild(card)
+
+    card.addEventListener('click', () => {
+        localStorage.setItem('id', id)
+        window.location.href = 'detalhes.html'
     })
 }

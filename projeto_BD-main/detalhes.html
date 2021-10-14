@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <title>Detalhes</title>
+</head>
+<body>
+    <div id="container">
+        <div id="header-container">
+            <header>
+                <a href="index.html" class="a-limpo" id="logo"><h1>LOGO</h1></a>
+    
+                <div id="barra-de-pesquisa">
+                    <input type="text" placeholder="Pesquisar Produto" class="input-limpo" id="input-busca">
+                    <button onclick="buscar()"><i class="fas fa-search"></i></button>
+                </div>
+    
+                <a href="#" class="a-decorado">Cadastrar Produto</a>
+            </header>
+        </div>
+
+        <div id="detalhes">
+            <div class="img-detalhe">
+                <img id="detalhe-imagem" alt="Imagem do Produto" >
+            </div>
+
+            <div id="dados">
+                <h3 id="detalhe-nome"></h3>
+                <p id="detalhe-id"></p>
+                <p id="detalhe-valor"></p>
+                <p id="detalhe-categoria"></p>
+                <p id="detalhe-quantidade"></p>
+            </div>
+        </div>
+        
+        <div id="sugestoes">
+    
+        </div>    
+    </div>
+    
+    <script src="JS/produto.js"></script>
+</body>
+</html>
