@@ -1,0 +1,374 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: rgb(224, 224, 224);
+}
+
+.ul-limpa {
+    list-style-type: none;
+}
+
+.a-limpo {
+    text-decoration: none;
+    color: black;
+}
+
+.input-limpo {
+    border: none;
+}
+
+.input-limpo:focus {
+    outline: 0;
+}
+
+.a-decorado {
+    display: flex;
+    align-items: center;
+    font-size: .9em;
+    height: 30px;
+    background-color: rgb(190, 190, 190);
+    color: black;
+    border-radius: 6px;
+    padding: 0 6px;
+    text-decoration: none;
+}
+
+.a-decorado:hover {
+    opacity: .8;
+}
+
+#container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#header-container {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    background-image: linear-gradient(to bottom, blue, rgb(2, 194, 194));
+}
+
+#header-container header {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+#barra-de-pesquisa {
+    width: 53%;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 2px;
+    border-radius: 6px;
+}
+
+#barra-de-pesquisa input {
+    flex-grow: 1;
+    margin-left: 8px;
+    font-size: .9em;
+}
+
+#barra-de-pesquisa button {
+    width: 60px;
+    height: 30px;
+    border-radius: 6px;
+    margin-left: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: rgb(190, 190, 190);
+}
+
+#barra-de-pesquisa button:hover {
+    opacity: .8;
+}
+
+#barra-de-pesquisa button:active {
+    background-color: gray;
+}
+
+#main {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 10px auto 0 auto;
+}
+
+#menu-lateral {
+    display: flex;
+    width: 20%;
+}
+
+#menu-lateral ul {
+    display: flex;
+    gap: 10px;
+}
+
+#menu-lateral ul li {
+    display: flex;
+    margin-top: 5px;
+}
+
+#menu-lateral ul li input, label {
+    margin-right: 2px;
+    cursor: pointer;
+}
+
+#menu-lateral ul li div {
+    cursor: pointer;
+}
+
+#lista-produtos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: initial;
+    flex-grow: 1;
+    gap: 10px;
+    width: 75%;
+    height: fit-content;
+}
+
+#sugestoes {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    height: fit-content;
+    margin-bottom: 50px;
+    gap: 10px;
+}
+
+#detalhes {
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    width: 90%;
+    background-color: rgb(240, 240, 240);
+    padding: 10px;
+    margin: 5px auto 0 auto;
+}
+
+#detalhes .img-detalhe {
+    margin-right: 40px;
+}
+
+#dados {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#dados p {
+    display: flex;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.cardContainer {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 250px;
+    padding: 4px;
+    background-color: rgb(161, 161, 161);
+}
+
+#botoesCardContainer {
+    display: flex;
+    justify-content: space-around;
+    height: 20%;
+    width: 100%;
+}
+
+#botoesCardContainer button {
+    width: 50%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.btnExcluir {
+    color: red;
+    cursor: pointer;
+}
+
+#listaCategorias li {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card {
+    display: flex;
+    box-sizing: border-box;
+    width: 99%;
+    height: 80%;
+    background-color: rgb(240, 240, 240);
+    cursor: pointer;
+    padding: 10px;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+@media screen and (min-width: 100px) {
+    #header-container header {
+        width: 90%;
+    }
+
+    #main {
+        width: 90%;
+        gap: 5px;
+    }
+
+    #header-container header h1 {
+        order: 1;
+    }
+
+    #header-container header a {
+        order: 2;
+    }
+
+    #header-container header #barra-de-pesquisa {
+        width: 100%;
+        order: 3;
+    }
+    
+    #menu-lateral {
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    #menu-lateral h4 {
+        width: 100%;
+    }
+
+    #menu-lateral ul {
+        flex-flow: row wrap;
+    }
+
+    #detalhes {
+        width: 100%;
+        flex-direction: column wrap;
+    }
+
+    #detalhes .img-detalhe {
+        width: 100%;
+        flex-grow: 1;
+    }
+
+    #detalhes img {
+        width: 100%;
+    }
+
+    #sugestoes {
+        margin-top: 10px;
+        width: 100%;
+        border-top: 1px solid gray;
+        justify-content: space-between;
+        padding-top: 10px;
+    }
+    
+    #lista-produtos {
+        justify-content: center;
+    }
+
+    .cardContainer {
+        width: 80%;
+    }
+
+}
+
+@media screen and (min-width: 300px) {
+    #lista-produtos {
+        justify-content: initial;
+    }
+
+    .cardContainer {
+        width: 46%;
+    }
+
+}
+
+@media screen and (min-width: 600px) {
+    #header-container #logo {
+        order: 1;
+    }
+
+    #header-container header a {
+        order: 3;
+    }
+
+    #header-container header #barra-de-pesquisa {
+        order: 2;
+        width: 46%;
+    }
+
+    #detalhes {
+        width: 90%;
+        flex-direction: row;
+    }
+
+    #detalhes .img-detalhe {
+        width: 40%;
+        max-height: 350px;
+        max-width: 350px;
+    }
+
+    #detalhes img {
+        width: 100%;
+    }
+
+    #detalhes #dados {
+        width: 40%;
+        flex-grow: 1;
+    }
+
+    #sugestoes {
+        width: 90%;
+        justify-content: initial;
+    }
+
+    .cardContainer {
+        width: 31.6%;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    #menu-lateral {
+        width: 18%;
+        flex-flow: column nowrap;
+    }
+
+    #menu-lateral ul {
+        flex-flow: column wrap;
+        gap: 0;
+    }
+
+    #lista-produtos {
+        width: 70%;
+    }
+
+    .cardContainer {
+        width: 23.3%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .cardContainer {
+        width: 18.8%;
+    }
+}

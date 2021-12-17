@@ -1,0 +1,215 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: rgb(224, 224, 224);
+}
+
+.ul-limpa {
+    list-style-type: none;
+}
+
+.a-limpo {
+    text-decoration: none;
+    color: black;
+}
+
+.input-limpo {
+    border: none;
+    padding: 5px;
+}
+
+.input-limpo:focus {
+    outline: 0;
+}
+
+.a-decorado {
+    display: flex;
+    align-items: center;
+    font-size: .9em;
+    height: 30px;
+    background-color: rgb(190, 190, 190);
+    color: black;
+    border-radius: 6px;
+    padding: 0 6px;
+    text-decoration: none;
+}
+
+.a-decorado:hover {
+    opacity: .8;
+}
+
+.textarea-limpo {
+    outline: none;
+    padding: 5px;
+}
+
+.inline-display {
+    border: 1px solid gray;
+    background-color: rgb(216, 216, 216);
+    margin: 0 5px;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    max-width: fit-content;
+    height: 20px;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+#inputAlterarIdProduto {
+    width: 80px;
+    display: none;
+}
+
+#selectsCategoria {
+    height: 30px;
+}
+
+#container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#header-container {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    background-image: linear-gradient(to bottom, blue, rgb(2, 194, 194));
+}
+
+#header-container header {
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+#barra-de-pesquisa {
+    width: 53%;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 2px;
+    border-radius: 6px;
+}
+
+#barra-de-pesquisa input {
+    flex-grow: 1;
+    margin-left: 8px;
+    font-size: .9em;
+}
+
+#barra-de-pesquisa button {
+    width: 60px;
+    height: 30px;
+    border-radius: 6px;
+    margin-left: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: rgb(190, 190, 190);
+}
+
+#barra-de-pesquisa button:hover {
+    opacity: .8;
+}
+
+#barra-de-pesquisa button:active {
+    background-color: gray;
+}
+
+#main {
+    width: 50%;
+    max-width: 500px;
+    display: flex;
+    justify-content: center;
+    margin: 10px auto 0 auto;
+}
+
+#selectsCategoria {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    gap: 5px;
+}
+
+#selectsCategoria div {
+    width: fit-content;
+}
+
+#form-cadastro-produto {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 10px;
+}
+
+#form-cadastro-produto div {
+    flex-grow: 1;
+}
+
+#btn-adicionarCategoria {
+    display: inline;
+    padding: 5px;
+    background-color: rgb(158, 158, 158);
+    color: black;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+#btn-adicionarCategoria:hover {
+    cursor: pointer;
+    opacity: .7;
+}
+
+@media screen and (min-width: 100px) {
+    #header-container header {
+        width: 90%;
+    }
+
+    #main {
+        width: 90%;
+        gap: 5px;
+    }
+
+    #header-container header h1 {
+        
+        order: 1;
+    }
+
+    #header-container header a {
+        order: 2;
+    }
+
+    #header-container header #barra-de-pesquisa {
+        width: 100%;
+        order: 3;
+    }
+
+    #form-cadastro-produto {
+        text-align: center;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    #header-container #logo {
+        order: 1;
+    }
+
+    #header-container header a {
+        order: 3;
+    }
+
+    #header-container header #barra-de-pesquisa {
+        order: 2;
+        width: 46%;
+    }
+}
